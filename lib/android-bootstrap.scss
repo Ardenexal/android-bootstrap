@@ -1,0 +1,76 @@
+@import 'mixins';
+@import 'bower_components/font-awesome/scss/font-awesome';
+
+$backgroundColor: #DDDDDD;
+$an-nav-border: #D2D2D2;
+$an-icon-color: #888888;
+
+.android-top-nav{
+  height: 4%;
+  width: 100%;
+  overflow: hidden;
+  background-color: $backgroundColor;
+  display: block;
+  border-bottom: $an-nav-border;
+  @include box-shadow( 0px 1px 1px 0px rgba(50, 50, 50, 0.45));
+};
+.android-top-nav-menu:active{
+
+};
+.android-top-nav ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+};
+
+.android-top-nav li{
+  float: left;
+  height: 100%;
+  width: auto;
+  padding: 2% 2% 2% 0;
+  font-size: 1.75em;
+  cursor: pointer;
+};
+.android-top-nav li a{
+  text-decoration: none;
+  color:#333333;
+
+}
+.android-top-nav-menu{
+    @include transform-origin(50% 50%);
+  @include translate(-20px,0);
+  height: 100%;
+
+};
+
+.an-top-nav-btn:active{
+  background-color: darken($backgroundColor,10);
+}
+.an-top-nav-icon{
+  color: $an-icon-color;
+  font-size: 1.25em;
+
+};
+
+#settings{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+@import 'mixins';
+
+@keyframes an-side-nav-slide-in{
+  0% {left:0%;}
+  100% {left:80%;}
+}
+
+@keyframes an-side-nav-slide-out{
+  0% {left:100%;}
+  100% {left:0%;}
+}
+
+.slide-in{
+  @include animation(an-side-nav-slide-in 2s);
+}
+.slide-out{
+  @include animation(an-side-nav-slide-out 2s);
+}

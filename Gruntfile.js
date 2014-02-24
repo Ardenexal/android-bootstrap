@@ -84,8 +84,8 @@ module.exports = function(grunt) {
 				},
 				build: {
 					files:  {},
-					src:    '-bootstrap.js',
-					dest:   '-bootstrap.min.js'
+					src:    'android-bootstrap.js',
+					dest:   'android-bootstrap.min.js'
 				}
 			},
 			less: {
@@ -93,17 +93,17 @@ module.exports = function(grunt) {
 					options: {
 					},
 					files: {
-						"main.css": "_base.less",
-						"-bootstrap.css": "_-bootstrap.less"
+						"android-bootstrap.css": "android-bootstrap.scss",
+						"base.css": "base.scss"
 					}
 				}
 			},
 			cssmin: {
 				dev: {
-					src: ['-bootstrap.css'],
-					dest: '-bootstrap.min.css'
+					src: ['android-bootstrap.css'],
+					dest: 'android-bootstrap.min.css'
 				}
-			}/*,
+			},/*,
 			karma: {
 				unit: {
 					configFile: publicPathRelativeRoot+'config/karma.conf.js',
@@ -111,6 +111,34 @@ module.exports = function(grunt) {
 					browsers: ['PhantomJS']
 				}
 			}*/
+            // Compiles Sass to CSS and generates necessary files if requested
+            compass: {
+                options: {
+                    sassDir: '<%= yeoman %>/lib',
+                    cssDir: 'dist/',
+                    generatedImagesDir: '.tmp/images/generated',
+                    imagesDir: '<%= yeoman %>/',
+                    javascriptsDir: '<%= yeoman %>/',
+                    fontsDir: '<%= yeoman %>/styles/fonts',
+                    importPath: '<%= yeoman %>/bower_components',
+                    httpImagesPath: '/images',
+                    httpGeneratedImagesPath: '/images/generated',
+                    httpFontsPath: '/styles/fonts',
+                    relativeAssets: false,
+                    assetCacheBuster: false,
+                    raw: 'Sass::Script::Number.precision = 10\n'
+                },
+                dist: {
+                    options: {
+                        generatedImagesDir: '<%= yeoman.dist %>/images/generated'
+                    }
+                },
+                server: {
+                    options: {
+                        debugInfo: true
+                    }
+                }
+            }
 		});
 		
 		
